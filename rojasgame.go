@@ -12,7 +12,7 @@ func getNames() (iFirstName string, iLastName string) {
 	return iFirstName, iLastName
 }
 
-func selectWeapon(coins int) (iweapon string, icoins int) {
+func selectWeapon(weapon string, coins int) (iweapon string, icoins int) {
 
 	fmt.Println("Welcome to the Weapons Depot")
 	fmt.Println("Select from the following list:")
@@ -37,6 +37,10 @@ func selectWeapon(coins int) (iweapon string, icoins int) {
 		fmt.Println("You have sucessfully purchased a", iweapon)
 		icoins = coins - checkout
 
+	} else {
+		fmt.Println("You can't afford that!")
+		iweapon = weapon
+		icoins = coins
 	}
 	return iweapon, icoins
 }
@@ -47,8 +51,8 @@ func main() {
 	fmt.Println(lastName)
 	fmt.Println("Welcome ", firstName, "", lastName)
 	coins := 500
-	weapon := ""
-	weapon, coins = selectWeapon(coins)
+	weapon := "Hands"
+	weapon, coins = selectWeapon(weapon, coins)
 	fmt.Println("Ready to go to battle with your ", weapon)
 	fmt.Println("You now have only", coins, "left")
 }
